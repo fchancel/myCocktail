@@ -1,46 +1,32 @@
 # myCoktail
+This project aims to offer its user 3 random cocktails.
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+This one has two themes, an extravagant Dark Mode and a sober Light Mode, it is possible to alternate between one and the other thanks to the button located at the bottom right of the screen.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Type Support for `.vue` Imports in TS
+It is possible to change the cocktails in two ways. Either by reloading the page, or by using the button in the center called `Give me new cocktails`.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+You can choose to keep one or more cocktails, this will have the effect of keeping them and only changing the unselected ones.
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
-## Customize configuration
+## Technology & API used 
+Vue.js 3, TypeScript, TailwindCss, Vitest, Docker, [thecocktaildb](https://www.thecocktaildb.com/)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Run Project
 
 ```sh
-npm install
+docker-compose build
 ```
-
-### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+docker-compose up
 ```
 
-### Type-Check, Compile and Minify for Production
+### Run Test
 
 ```sh
-npm run build
+npm run test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
