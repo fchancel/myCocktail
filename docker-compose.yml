@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    front-end:
+      image: node:latest
+      restart: always
+      container_name: myCocktail_node
+      build:
+        context: .
+        dockerfile: .docker/Dockerfile.frontend
+      volumes:
+        - ./:/app/frontCocktail
+      ports:
+        - 8080:8080

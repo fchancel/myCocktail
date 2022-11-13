@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "DancingScript";
+  font-style: normal;
+  src: url("@/assets/fonts/DancingScript.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PrataRegular";
+  font-style: normal;
+  src: url("@/assets/fonts/Prata-Regular.ttf");
+  font-display: swap;
+}
+
+.txtHandScript,
+h1,
+h2 {
+  font-family: "DancingScript", sans-serif;
+}
+
+.txtRegular {
+  font-family: "PrataRegular", sans-serif;
+}
+
+.txt-shadow {
+  text-shadow: 5px 10px 20px;
+}
+
+.txt-shadow-black {
+  text-shadow: 5px 10px 25px black;
+}
+
+.txt-shadow-white {
+  text-shadow: 5px 10px 25px white;
+}
