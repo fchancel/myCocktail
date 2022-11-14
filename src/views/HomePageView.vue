@@ -72,7 +72,7 @@ await changeCocktails();
         title="Give me new cocktails"
         class="w-max"
         :class="{
-          'hover:scale-110 hover:rotate-12':
+          'hover:scale-110 hover:rotate-12 active:rotate-0':
             cardLoaded && nbCardLock !== nbCocktail,
         }"
         :disabled="!cardLoaded || nbCardLock === nbCocktail"
