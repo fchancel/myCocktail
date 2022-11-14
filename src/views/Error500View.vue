@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import VButton from "@/components/VButton.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div

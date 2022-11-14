@@ -6,14 +6,14 @@ const URL = "https://www.thecocktaildb.com/api/json/v1/1";
  * Call api for get a random cocktail
  *
  */
-async function getRandomCocktailFromApi() {
+export async function getRandomCocktailFromApi() {
   try {
     const response = await fetch(`${URL}/random.php`, {
       method: "GET",
     });
     return response;
   } catch (e) {
-    throw e;
+    return null;
   }
 }
 
@@ -25,13 +25,7 @@ async function getRandomCocktailFromApi() {
  * @return {boolean} return true if id exist in cocktails, else return false.
  */
 export function checkIfCocktailAlreadyExist(id: string, cocktails: Cocktail[]) {
-  let response = false;
-  cocktails.forEach((elt) => {
-    if (Object.values(elt).includes(id)) {
-      response = true;
-    }
-  });
-  return response;
+  return cocktails.some((elt) => Object.values(elt).includes(id));
 }
 
 /**
@@ -55,7 +49,6 @@ export async function getRandomCocktails(
   cocktails: Cocktail[] = []
 ): Promise<Cocktail[] | null> {
   let cocktailsResponse: Cocktail[] = [];
-
   while (cocktailsResponse.length < nb) {
     if (
       cocktails &&
@@ -66,18 +59,21 @@ export async function getRandomCocktails(
         JSON.parse(JSON.stringify(cocktails[cocktailsResponse.length]))
       );
     } else {
-      let response = await getRandomCocktailFromApi();
-      if (response.ok) {
-        response = await response.json();
-        if (checkIfCocktailHaveAnImage(response.drinks["0"])) {
+      const response = await getRandomCocktailFromApi();
+      if (response && response.ok) {
+        const data = await response.json();
+
+        //Check if data has Image
+        if (checkIfCocktailHaveAnImage(data.drinks[0])) {
+          // Check for duplicates cocktails
           if (
             !checkIfCocktailAlreadyExist(
-              response.drinks["0"],
+              data.drinks[0].idDrink,
               cocktailsResponse
             ) &&
-            !checkIfCocktailAlreadyExist(response.drinks["0"], cocktails)
+            !checkIfCocktailAlreadyExist(data.drinks[0].idDrink, cocktails)
           ) {
-            cocktailsResponse.push({ ...response.drinks["0"], lock: false });
+            cocktailsResponse.push({ ...data.drinks[0], lock: false });
           }
         }
       } else {
@@ -95,12 +91,7 @@ export async function getRandomCocktails(
  * @return {string[]} A list of ingredients.
  */
 export function getListOfIngredients(cocktail: Cocktail): string[] {
-  let lstIngredient: string[] = [];
-
-  for (const [key, value] of Object.entries(cocktail)) {
-    if (key.includes("Ingredient")) {
-      value ? lstIngredient.push(value) : "";
-    }
-  }
-  return lstIngredient;
+  return Object.entries(cocktail)
+    .filter(([key, value]) => key.includes("Ingredient") && value)
+    .map(([key, value]) => value);
 }

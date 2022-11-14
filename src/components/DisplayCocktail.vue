@@ -48,11 +48,11 @@ function changeLock() {
     <!-- Main part - Image / Ingredients -->
     <div class="relative overflow-y-scroll sidebar">
       <img
-        :src="cocktail.strDrinkThumb"
+        :src="cocktail.strDrinkThumb!"
         class="h-72 sm:h-96 md:h-full w-full object-cover duration-300 rounded-t-xl"
         :class="{ 'opacity-10 dark:opacity-5': showIngredients }"
         @load="waitingImageIsLoad"
-        :alt="cocktail.strDrinkThumb"
+        :alt="cocktail.strDrinkThumb!"
       />
       <DisplayIngredientsVue
         :ingredients="ingredients"

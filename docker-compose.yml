@@ -8,7 +8,7 @@ services:
       build:
         context: .
         dockerfile: .docker/Dockerfile.frontend
-      volumes:
-        - ./:/app/frontCocktail
+      # volumes:
+        # - ./:/app/
       ports:
         - 8080:8080

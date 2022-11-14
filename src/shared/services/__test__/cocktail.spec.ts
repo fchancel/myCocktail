@@ -3,7 +3,11 @@ import {
   checkIfCocktailAlreadyExist,
   checkIfCocktailHaveAnImage,
   getListOfIngredients,
+  getRandomCocktailFromApi,
+  getRandomCocktails,
 } from "@/shared/services/cocktailDb";
+
+import fakeData from "@/shared/services/__test__/fixtureFakeData.json";
 
 const lstCocktails = [
   {
@@ -70,5 +74,36 @@ describe("GetListOfIngredient", () => {
   });
   it("TestIfCocktailAlreadyExist, cocktail have not ingredient", () => {
     expect(getListOfIngredients(lstCocktails[4])).toHaveLength(0);
+  });
+});
+
+describe("getRandomCocktailFromApi", () => {
+  it("getRandomCocktailFromApi, throw error", async () => {
+    vi.stubGlobal("fetch", () => {
+      throw new Error();
+    });
+    expect(await getRandomCocktailFromApi()).toBeNull();
+  });
+
+  it("getRandomCocktailFromApi, get one cocktail", async () => {
+    vi.stubGlobal("fetch", async () => {
+      return {
+        idDrink: "1",
+      };
+    });
+    expect(await getRandomCocktailFromApi()).toEqual({
+      idDrink: "1",
+    });
+  });
+});
+
+describe("getRandomCocktails", () => {
+  it("getRandomCocktails, get one cocktail", async () => {
+    vi.stubGlobal("fetch", async () => {
+      return { ok: true, json: async () => fakeData };
+    });
+    expect(await getRandomCocktails(1)).toEqual([
+      { ...fakeData.drinks[0], lock: false },
+    ]);
   });
 });

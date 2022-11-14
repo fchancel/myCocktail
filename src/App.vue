@@ -11,9 +11,6 @@ const route = useRoute();
     <div
       class="flex overflow-x-hidden min-h-screen dark:bg-neutral-900 bg-white dark:text-white txtRegular bg-[url('/images/patternBgLight.png')] dark:bg-[url('/images/patternBgDark.png')]"
     >
-      <!-- Button for Manage Theme -->
-      <ManageTheme />
-
       <!-- Component Display -->
       <router-view v-slot="{ Component }" :key="route.path">
         <template v-if="Component">
@@ -24,6 +21,8 @@ const route = useRoute();
           </Transition>
         </template>
       </router-view>
+      <!-- Button for Manage Theme -->
+      <ManageTheme />
     </div>
   </div>
 </template>
