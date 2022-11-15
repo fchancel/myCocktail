@@ -33,6 +33,11 @@ docker-compose up
 ### Run Test
 
 ```sh
+npm i
 npm run test:unit
 ```
+or
 
+```sh
+docker exec myCocktail_node npm run test:unit 
+```
