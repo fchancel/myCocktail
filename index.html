@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>My Cocktail</title>
+
+    <!-- Schema.org meta for Google+ -->
+    <meta itemprop="name" content="MyCocktail" />
+    <meta itemprop="description" content="A cocktail generator with its list of ingredients at your disposal." />
+
+    <!-- Twitter summary card with large image must be at least 280x150px -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="MyCocktail" />
+    <meta name="twitter:description" content="A cocktail generator with its list of ingredients at your disposal." />
+
+    <!-- Open Graph meta (Facebook, Linkedin) -->
+    <meta name="description" content="A cocktail generator with its list of ingredients at your disposal." />
+    <meta property="og:title" content="MyCocktail " />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="A cocktail generator with its list of ingredients at your disposal." />
   </head>
+  
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>

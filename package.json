@@ -2,7 +2,7 @@
   "name": "mycoktail",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "run-p  build-only",
     "preview": "vite preview",
     "test:unit": "vitest --environment jsdom",
