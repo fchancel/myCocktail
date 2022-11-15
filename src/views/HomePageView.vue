@@ -81,7 +81,7 @@ await changeCocktails();
 
       <!-- Cocktails -->
       <div
-        class="flex flex-col space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-5 md:px-5 lg:gap-10 lg:px-10 xl:gap-20 xl:px-20 2xl:gap-32 2xl:px-32"
+        class="flex flex-col space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-5 md:px-5 lg:gap-10 lg:px-10 xl:gap-20 xl:px-20 2xl:gap-32 2xl:px-32 min-h-[500px]"
       >
         <template v-for="cocktail in cocktails" :key="cocktail.idDrink">
           <DisplayCocktail
